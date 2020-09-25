@@ -1,0 +1,15 @@
+{
+  "name": "discord-jonzybot",
+  "version": "1.0.5",
+  "description": "Meh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pao",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "node-fetch": "^2.6.1"
+  }
+}
