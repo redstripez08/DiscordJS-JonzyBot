@@ -5,7 +5,7 @@ Mainly used to get memes and dadjokes. There is More to Come tho.
 ___
 
 ## Commands  
-**Prefixed with '*'**
+**Prefixed with '\*'**
 
 | Command       | Description                                             |
 |---------------|---------------------------------------------------------|
