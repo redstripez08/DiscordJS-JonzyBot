@@ -9,7 +9,7 @@ ___
 
 | Command       | Description                                             |
 |---------------|---------------------------------------------------------|
-|meme           |Gets a meme using RR3l3ntl3ss/Meme_Api.                  |
+|meme           |Gets a meme using R3l3ntl3ss/Meme_Api.                   |
 |dadjoke        |Gets a dad joke using icanhazdadjoke API.                |
 |test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
 
