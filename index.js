@@ -4,7 +4,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ws:{intents: Discord.Intents.ALL}});
 const fs = require("fs");
 const config = require("./config.json");
-const secret = require("./secret.json");
 const package = require("./package.json");
 const cooldowns = new Discord.Collection();
 client["commands"] = new Discord.Collection();
@@ -16,8 +15,7 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-const { Prefix }  = config;
-const { Token }   = secret;
+const { Prefix, Token }  = process.env || config;
 const { version } = package;
 
 client.on('ready', () => {
