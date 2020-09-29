@@ -1,3 +1,4 @@
 {
-    "Prefix": "*"
+    "Prefix": "*",
+    "Token": "token-goes-here"
 }
