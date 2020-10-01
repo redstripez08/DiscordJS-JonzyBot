@@ -13,6 +13,8 @@ ___
 |dadjoke        |Gets a dad joke using icanhazdadjoke API.                |
 |test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
 |fact           |Sends a random fact using randomuselessfacts API.        |
+|ships          |Sends information of school ships via my own API.        |  
+
   
   
 ## Todo
@@ -20,6 +22,7 @@ ___
 * More Commands.
 * Cooldowns.
 * Find a Better Environment.
+
 
 **Visit My Github**  
 [Github](https://github.com/redstripez08 "Mah super kewl GitHub")
