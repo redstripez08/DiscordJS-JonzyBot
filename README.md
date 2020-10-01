@@ -12,6 +12,7 @@ ___
 |meme           |Gets a meme using R3l3ntl3ss/Meme_Api.                   |
 |dadjoke        |Gets a dad joke using icanhazdadjoke API.                |
 |test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
+|fact           |Sends a random fact using randomuselessfacts API.        |
   
   
 ## Todo
