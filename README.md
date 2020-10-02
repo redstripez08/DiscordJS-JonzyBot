@@ -14,7 +14,6 @@ ___
 |test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
 |fact           |Sends a random fact using randomuselessfacts API.        |
 |ships          |Sends information of school ships via my own API.        |  
-
   
   
 ## Todo
@@ -23,6 +22,11 @@ ___
 * Cooldowns.
 * Find a Better Environment.
 
+## Updates
+* Added pin.js
+* Added ping.js
+* Updated ship.js 
+* Updated test.js
 
-**Visit My Github**  
-[Github](https://github.com/redstripez08 "Mah super kewl GitHub")
+<!-- **Visit My Github**  
+[Github](https://github.com/redstripez08 "Mah super kewl GitHub") -->
