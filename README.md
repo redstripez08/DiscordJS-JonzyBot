@@ -5,7 +5,7 @@ Mainly used to get memes and dadjokes. There is More to Come tho.
 ___
 
 ## Commands  
-**Prefixed with "\*" (Asterisk)**
+**Prefixed with "\*" (Asterisk)**  
 
 | Command       | Description                                             |
 |---------------|---------------------------------------------------------|
@@ -13,8 +13,13 @@ ___
 |dadjoke        |Gets a dad joke using icanhazdadjoke API.                |
 |test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
 |fact           |Sends a random fact using randomuselessfacts API.        |
-|ships          |Sends information of school ships via my own API.        |  
-  
+|ships          |Sends information of school ships via my own API.        |
+|ping           |Sends server ping in milliseconds.                       |  
+|pin            |Pins message as embed.^~                                  |
+|poll           |Creates a poll to react.^~                                |
+
+**^ Role-Restricted**  
+**~ Work-In-Progress**
   
 ## Todo
 * Role-restricted commands.
