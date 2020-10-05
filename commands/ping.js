@@ -3,7 +3,7 @@ module.exports = {
     aliases: null,
     description: "ping",
     usage: null,
-    cooldown: 10,
+    cooldown: 0,
     guildOnly: false,
     args: false,
     role: null,
