@@ -7,16 +7,18 @@ ___
 ## Commands  
 **Prefixed with "\*" (Asterisk)**  
 
-| Command       | Description                                             |
-|---------------|---------------------------------------------------------|
-|meme           |Gets a meme using R3l3ntl3ss/Meme_Api.                   |
-|dadjoke        |Gets a dad joke using icanhazdadjoke API.                |
-|test           |Tests stuff. resends arg. sends BIG CHUNGUS if null      |
-|fact           |Sends a random fact using randomuselessfacts API.        |
-|ships          |Sends information of school ships via my own API.        |
-|ping           |Sends server ping in milliseconds.                       |  
-|pin            |Pins message as embed.^~                                  |
-|poll           |Creates a poll to react.^~                                |
+| Command       | Description                                               |
+|---------------|-----------------------------------------------------------|
+|meme           |Gets a meme using R3l3ntl3ss/Meme_Api.                     |
+|dadjoke        |Gets a dad joke using icanhazdadjoke API.                  |
+|test           |Tests stuff. resends arg. sends BIG CHUNGUS if null        |
+|fact           |Sends a random fact using randomuselessfacts API.          |
+|ships          |Sends information of school ships via my own API.          |
+|ping           |Sends server ping in milliseconds.                         |  
+|pin            |Pins message as embed.^~                                   |
+|poll           |Creates a poll to react.^~                                 |
+|school         |Sends a list of school-related things.~                    |
+|update         |Sends recent bot updates.                                  |
 
 **^ Role-Restricted**  
 **~ Work-In-Progress**
@@ -32,6 +34,9 @@ ___
 * Added ping.js
 * Updated ship.js 
 * Updated test.js
+* Added school.js
+* Added update.js
 
 <!-- **Visit My Github**  
 [Github](https://github.com/redstripez08 "Mah super kewl GitHub") -->
+  
