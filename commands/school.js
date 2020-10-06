@@ -3,23 +3,26 @@ module.exports = {
     aliases: null,
     description: "Gets A list of school-related things.",
     usage: null,
-    cooldown: 10,
+    cooldown: 0,
     guildOnly: false,
     args: false,
     role: null,
     execute(message, args) {
-        const { MessageEmbed } = require("discord.js");
+        const { Prefix } = require("../config.json");
+        const { MessageEmbed, MessageAttachment } = require("discord.js");
 
         if (!args.length) {
             const schoolEmbed = new MessageEmbed()
                 .setTitle("School Stuff")
                 .setColor("#00ff00")
-                .setDescription("__Usage: *school <option>__")
+                .setDescription(`__Usage: ${Prefix}school <option>__`)
                 .addFields(
                     {name: "emojis", value: "Sends commonly used emojis."},
                     {name: "prayer", value: "Sends random Prayer."},
-                    {name: "homework", value: "Gets Homework."}
-                )
+                    {name: "homework", value: "Gets Homework."},
+                    {name: "schedule", value: "Sends School Schedule"},
+                    {name: "module", value: "Sends the google drive link to modules."}
+                );
                 
             message.channel.send(schoolEmbed);
         } else {
@@ -42,6 +45,17 @@ module.exports = {
                 case "assign":
                 case "assignment":
                     message.channel.send("something");
+                    break;
+
+                case "module":
+                case "modules":
+                    message.channel.send("\`\`\`\nhttps://drive\`\`\`");
+                    break;
+
+                case "sched":
+                case "schedule":
+                    const schedAttachment = new MessageAttachment('./Sched.jpg');
+                    message.channel.send(schedAttachment);
                     break;
             
                 default:
