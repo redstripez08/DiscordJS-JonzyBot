@@ -36,6 +36,7 @@ ___
 * Updated test.js
 * Added school.js
 * Added update.js
+* Stuff
 
 <!-- **Visit My Github**  
 [Github](https://github.com/redstripez08 "Mah super kewl GitHub") -->
