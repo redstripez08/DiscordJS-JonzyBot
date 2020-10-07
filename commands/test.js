@@ -7,7 +7,24 @@ module.exports = {
     guildOnly: false,
     args: false,
     role: null,
-    execute(message, args) {
+    async execute(message, args) {
+        
+        const channel = message.client.channels.cache.get("746260986255900734");
+        const webhooks = await channel.fetchWebhooks();
+        const webhook = webhooks.first();
+        //console.log(webhook);
+
+        const embed = new MessageEmbed()
+            .setTitle("Stuff")
+            .setColor("ff0000")
+            .setDescription(args.join(" "));
+        
+        await webhook.send("Webhook test", {
+			username: 'Updates',
+            avatarURL: 'https://i.imgur.com/wSTFkRM.png',
+            embeds: [embed]
+		});
+        return;
         
         if (!args.length) return message.channel.send("BIG CHUNGUS");
 
