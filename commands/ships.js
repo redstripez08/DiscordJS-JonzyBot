@@ -8,7 +8,7 @@ module.exports = {
     args: false,
     role: null,
     execute(message, args) {
-        const { MessageEmbed } = require('discord.js');
+        const { MessageEmbed, MessageAttachment } = require('discord.js');
         const fetch = require('node-fetch');
         const config = require("../config.json");
         // const url = require('url');
@@ -17,36 +17,51 @@ module.exports = {
 
         async function getShips(ship) {
             try {
-                const link = new URL("http://localhost:3000/ships");
-                const queryParams = {
-                    ship_name: ship,
-                    secret: config.Secret
+                const originLink = "http://localhost:3000";
+                const queryParams = {secret: config.Secret};
+                const options = {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json, application/xml;q=0.9"
+                    }
                 };
-                link.search = new URLSearchParams(queryParams).toString();
+
+                if (ship.length) queryParams["ship_name"] = ship;
 
                 if (!ship.length) {
-                    const res = await fetch(link);
-                    if (res.status < 200 || res.status >= 300) throw `Status Code: ${res.status}`;
+                    const link = new URL("/ships", originLink);
+                    link.search = new URLSearchParams(queryParams).toString();
+                    
+                    const res = await fetch(link, options);
+                    if (!res.ok) throw `Status Code: ${res.status} || ${res.statusText}`;
                     
                     const data = await res.json();
                     let shipArr = [];
 
-                    for (const ship of data) {
-                        shipArr.push(ship.ship_name);
-                    }
+                    // for (const ship of data) {
+                    //     shipArr.push(ship.ship_name);
+                    // }
 
                     const shipEmbed = new MessageEmbed()
-                        .setColor("fff")//!Set to Pink
-                        .setDescription("ahh");
+                        .setColor("#FFC0CB")//!Set to Pink
+                        .setTitle("Ships")
+                        .setDescription("Suggest some more pls.");
                         //! Create emoji react by id. click emoji and it sends ship info
 
+                    for (const ship of data) {
+                        shipEmbed.addField(`__${ship.ship_name}__`, "Some Description here");
+                    }
+    
 
-                    return message.channel.send(shipArr.join(', ')); 
+                    return message.channel.send(shipEmbed); 
 
                 } else {
-                    const res = await fetch(link);
-                    if (res.status < 200 || res.status >= 300) throw `Status Code: ${res.status}`;
+                    const link = new URL("/shippics", originLink);
+                    link.search = new URLSearchParams(queryParams).toString();
+                    const res = await fetch(link, options);
+                    if (!res.ok) throw `HTTP Status Code: ${res.status} || ${res.statusText}\nError: \`${status.error}\``;
                     const data = await res.json();
+                    //console.log(data);
 
                     if (data.message) return message.channel.send(data.message);
 
@@ -69,7 +84,8 @@ module.exports = {
                     const galleryEmbed = new MessageEmbed()
                         .setColor('#a400bd')
                         .setTitle("Page 2 | Gallery")
-                        .setDescription("WIP");
+                        .setDescription("WIP")
+                        .setImage(data.media);
 
 
                     const m = await message.channel.send(shipEmbed);
@@ -79,9 +95,9 @@ module.exports = {
                     const page1Emoji = '1️⃣';
                     const page2Emoji = '2️⃣';
 
-                    const page1Filter = (react, user) => react.emoji.name === page1Emoji && user.id === message.author.id;
-                    const page2Filter = (react, user) => react.emoji.name === page2Emoji && user.id === message.author.id;
-                    const page1Collector = m.createReactionCollector(page1Filter, {time: 60 * 1000})
+                    const page1Filter = (react, user) => react.emoji.name === page1Emoji && !user.bot;
+                    const page2Filter = (react, user) => react.emoji.name === page2Emoji && !user.bot;
+                    const page1Collector = m.createReactionCollector(page1Filter, {time: 60 * 1000});
                     const page2Collector = m.createReactionCollector(page2Filter, {time: 60 * 1000});
 
                     page1Collector.on('collect', (reaction, user) => {
@@ -102,6 +118,7 @@ module.exports = {
     
             } catch (error) {
                 message.channel.send(`There was an error:\n\`${error}\``);
+                console.error(error);
             }
         }
 
