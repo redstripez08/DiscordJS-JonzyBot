@@ -8,7 +8,7 @@ module.exports = {
     args: false,
     role: null,
     execute(message, args) {
-        const { Prefix } = require("../config.json");
+        const { Prefix, gDrive } = require("../config.json");
         const { MessageEmbed, MessageAttachment } = require("discord.js");
 
         if (!args.length) {
@@ -44,12 +44,12 @@ module.exports = {
                 case "ass":
                 case "assign":
                 case "assignment":
-                    message.channel.send("something");
+                    message.channel.send("WIP");
                     break;
 
                 case "module":
                 case "modules":
-                    message.channel.send("\`\`\`\nhttps://drive\`\`\`");
+                    message.channel.send(gDrive);
                     break;
 
                 case "sched":
@@ -64,6 +64,5 @@ module.exports = {
             }
         }
 
-       
     }
 };
