@@ -1,0 +1,19 @@
+{
+    "subjects": [
+        {
+            "subject": "ICT",
+            "color": "#ffc0cb",
+            "gLink": "https://something.net",
+            "dayStart": 1,
+            "timeStart": "7:00",
+            "timeRemind": "6:50"
+        },
+        {
+            "subject": "Mathematics",
+            "color": "#0000ff",
+            "gLink": "https://example.com",
+            "dayStart": 1,
+            "timeStart": "9:30",
+            "timeRemind": "9:20"
+    ]
+}
