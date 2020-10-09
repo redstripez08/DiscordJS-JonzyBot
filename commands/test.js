@@ -9,7 +9,7 @@ module.exports = {
     role: null,
     async execute(message, args) {
         
-        const channel = message.client.channels.cache.get("746260986255900734");
+        const channel = message.client.channels.cache.get("num");
         const webhooks = await channel.fetchWebhooks();
         const webhook = webhooks.first();
         //console.log(webhook);
@@ -21,7 +21,6 @@ module.exports = {
         
         await webhook.send("Webhook test", {
 			username: 'Updates',
-            avatarURL: 'https://i.imgur.com/wSTFkRM.png',
             embeds: [embed]
 		});
         return;
