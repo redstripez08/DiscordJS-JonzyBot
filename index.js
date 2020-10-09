@@ -5,6 +5,7 @@ const client = new Discord.Client({ws:{intents: Discord.Intents.ALL}});
 const fs = require("fs");
 const config = require("./config.json");
 const package = require("./package.json");
+const classes = require("./classes");
 const cooldowns = new Discord.Collection();
 client["commands"] = new Discord.Collection();
 
@@ -15,11 +16,15 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-const { Prefix, Token }  = process.env || config;
+const { schoolChannel } = config;
+const { Prefix = config.Prefix, Token = config.Token } = process.env;
 const { version } = package;
 
 client.on('ready', () => {
   console.log(`JonzyBot Activated.\nVersion ${version}\n`);
+
+  const channel = client.channels.cache.get(schoolChannel);
+  client.commands.get("schooltime").execute(channel);
 });
 
 client.on('message', message => {
@@ -31,6 +36,15 @@ client.on('message', message => {
         client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return message.channel.send("Not a valid command!");
+
+  //* Classes
+  const Cooldown = new classes.Cooldown(message, command, cooldowns);
+  const Role = new classes.Role(message, command);
+  const ArgsClass = new classes.ArgsClass(message, command, args);
+
+  if (!Role.check) return Role.denied;
+  if (!Cooldown.check) return;
+  if (!ArgsClass.check) return;
 
   try {
     command.execute(message, args);
