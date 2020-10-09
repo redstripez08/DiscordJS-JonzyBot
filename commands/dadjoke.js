@@ -7,27 +7,25 @@ module.exports = {
     guildOnly: false,
     args: false,
     role: null,
-    execute(message, args) {
+    async execute(message, args) {
         const fetch = require("node-fetch");
+        try {
+            const link = "https://icanhazdadjoke.com/";
+            const options = {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
+                }
+            };
 
-        (async() => {
-            try {
-                const link = "https://icanhazdadjoke.com/";
-                const options = {
-                    method: "GET",
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                };
-    
-                const { joke, status } = await fetch(link, options).then(res => res.json());
-                if (status < 200 || status > 300) throw `Status Code: ${status}`;
+            const res = await fetch(link, options);
+            if (!res.ok) throw `HTTP Status Code: ${res.status} || ${res.statusText}`;
 
-                message.channel.send(joke);
-            } catch (error) {
-                message.channel.send(`There was an error:\n\`${error}\``)
-            }
-        })();
+            const { joke } = await res.json();
 
+            message.channel.send(joke);
+        } catch (error) {
+            message.channel.send(`There was an error:\n\`${error}\``);
+        }
     }
 };
